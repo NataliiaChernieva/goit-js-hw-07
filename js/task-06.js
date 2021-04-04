@@ -8,11 +8,12 @@
 
 const inputEl = document.querySelector('#validation-input');
 console.log(inputEl.dataset.length);
+console.log(inputEl.value.length);
 
-const a = inputEl.addEventListener('inputEl.blur', () => {
+const checkLength = inputEl.addEventListener('blur', () => {
     if (inputEl.value.length === inputEl.dataset.length) {
-        inputEl.classList.add('valid');
+         inputEl.classList.add("valid");
     } else {
-        inputEl.classList.add('invalid')
-   }
-})
+        inputEl.classList.add("invalid");
+    }
+});

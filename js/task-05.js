@@ -5,14 +5,15 @@
 
 const inputEl = document.querySelector('#name-input');
 let nameEl = document.querySelector('#name-output');
-console.log(nameEl.textContent);
-console.log(inputEl.textContent);
+//console.log(nameEl.textContent);
+//console.log(inputEl.textContent);
 
-inputEl.addEventListener('input', () => {
-    if (inputEl.value === null) {
+inputEl.addEventListener('input', (evt) => {
+    evt.preventDefault;
+    if (inputEl.value.length < 1) {
         nameEl.textContent = "незнакомец";
     } else {
-        nameEl.textContent = inputEl.value;
-    }
+    nameEl.textContent = inputEl.value;
+}
     return nameEl;
 });
