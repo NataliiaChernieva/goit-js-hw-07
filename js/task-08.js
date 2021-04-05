@@ -21,15 +21,14 @@ const renderEl = document.querySelector('button[data-action="render"]');
 const destroyEl = document.querySelector('button[data-action="destroy"]');
 const boxesEl = document.querySelector('#boxes');
 
-const red = Math.floor(Math.random() * 257);
-const green = Math.floor(Math.random() * 257);
-const blue = Math.floor(Math.random() * 257);
-
-//const amount = +inputEl.value;
-//console.log(amount);
+// const red = Math.floor(Math.random() * 257);
+// const green = Math.floor(Math.random() * 257);
+// const blue = Math.floor(Math.random() * 257);
 
 const createBoxes = amount => {
-    for (let i = 1; i <= inputEl.value; i += 1) {
+    amount = inputEl.value;
+    
+    for (let i = 1; i <= amount; i += 1) {
         const newBox = document.createElement('div');
                       
         newBox.style.width = 20 + 'px';
@@ -37,11 +36,16 @@ const createBoxes = amount => {
         newBox.style.width = Number.parseInt(newBox.style.width) + 10*i + 'px';
         newBox.style.height = Number.parseInt(newBox.style.height) + 10*i + 'px';
         
-        //newBox.style.backgroundColor = (red, green, blue);
-
- 
+        //newBox.classList.add('bgColor');
+        //console.log(newBox.classList);
+    
+        const bgColor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+        console.log(bgColor);
+  
+        newBox.style.background = bgColor;
+        
         boxesEl.append(newBox);
-        }
+    }
     
 };
 
