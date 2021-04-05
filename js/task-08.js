@@ -15,30 +15,34 @@
 
 
 ///В ПРОЦЕССЕ РАБОТЫ
+const controlsEl = document.querySelector('#controls');
 const inputEl= document.querySelector('#controls input');
 const renderEl = document.querySelector('button[data-action="render"]');
 const destroyEl = document.querySelector('button[data-action="destroy"]');
 const boxesEl = document.querySelector('#boxes');
+
 const red = Math.floor(Math.random() * 257);
 const green = Math.floor(Math.random() * 257);
 const blue = Math.floor(Math.random() * 257);
-//console.log(red, green,blue);
+
+//const amount = +inputEl.value;
+//console.log(amount);
 
 const createBoxes = amount => {
-   const newBox = document.createElement('div');
-    newBox.style.backgroundColor = (red, green, blue);
-    newBox.style.width = 30 + 'px';
-    newBox.style.height = 30 + 'px';
-    //console.log(newBox);
+    for (let i = 1; i <= inputEl.value; i += 1) {
+        const newBox = document.createElement('div');
+                      
+        newBox.style.width = 20 + 'px';
+        newBox.style.height = 20 + 'px';
+        newBox.style.width = Number.parseInt(newBox.style.width) + 10*i + 'px';
+        newBox.style.height = Number.parseInt(newBox.style.height) + 10*i + 'px';
+        
+        //newBox.style.backgroundColor = (red, green, blue);
 
-    boxesEl.append(newBox);
-
-// for (let i = 1; i <= amount; i+=1) {
-//    newBox.style.width = Number.parseInt(newBox.style.width)+ 10 + 'px';
-//    newBox.style.height = Number.parseInt(newBox.style.height)+ 10 + 'px';
-//    newBox.style.height += 10 + 'px';
-//    boxesEl.appendChild(newBox);
-// }
+ 
+        boxesEl.append(newBox);
+        }
+    
 };
 
 const addRenderEl = renderEl.addEventListener('click', createBoxes);
@@ -48,3 +52,5 @@ const removeBoxes = () => {
 };
 
 const cleanBoxes = destroyEl.addEventListener('click', removeBoxes);
+
+
