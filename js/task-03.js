@@ -24,7 +24,7 @@ const images = [
 
 
 const galleryEl = document.querySelector("#gallery");
-galleryEl.classList.add("gallery")
+galleryEl.classList.add("gallery");
 
 //1 способ
 // const makeImgGalery = ({ url, alt }) => {
@@ -40,17 +40,25 @@ galleryEl.classList.add("gallery")
 
 // const imgGalery = images.map(makeImgGalery);
 
-
 //2 способ
+// const makeImgGalery =({ url, alt }) => {
+//     galleryEl.insertAdjacentHTML('beforeend', `<li><img class="img" src=${url} alt = ${alt}></li>`)
+// };
 
-const makeImgGalery =({ url, alt }) => {
-    galleryEl.insertAdjacentHTML('beforeend', `<li><img class="img" src=${url} alt = ${alt}></li>`)
-};
-
-const newImgGalery = images.map(makeImgGalery);
+// const newImgGalery = images.map(makeImgGalery);
 
 //3 способ
 //  const newImgGalery = images.forEach(({ url, alt }) => {
 //     galleryEl.insertAdjacentHTML('beforeend', `<li><img class="img" src=${url} alt = ${alt}></li>`)
 //      return galleryEl;
 //  });
+
+//4 способ
+const makeListItem = images.map(({ url, alt }) => {
+  const itemEl = document.createElement("li");
+  itemEl.insertAdjacentHTML('afterbegin', `<img class="img" src=${url} alt = ${alt}>`);
+  return itemEl;
+});
+
+galleryEl.append(...makeListItem);
+  
